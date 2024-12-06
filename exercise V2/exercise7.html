@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Индикатор прогресса загрузки</title>
+    <link rel="stylesheet" href="style.css">
+    <nav>
+        <P>
+        <a href="exercise6.html">Go to exercise 6</a>
+    </p>
+        <p>
+            <a href="index.html">Go to the main</a>
+        </p>
+    </nav>
+</head>
+<body>
+    <div class="container">
+        <h1>Загрузка файла</h1>
+        
+        <label for="uploadProgress">Загрузка: <span id="progressLabel">0% Завершено</span></label>
+        <progress id="uploadProgress" value="0" max="100"></progress>
+        
+        <button onclick="startUpload()">Начать загрузку</button>
+    </div>
+
+    <script>
+        function startUpload() {
+            let progress = document.getElementById('uploadProgress');
+            let progressLabel = document.getElementById('progressLabel');
+            let value = 0;
+            
+            let interval = setInterval(function() {
+                if (value < 100) {
+                    value += 5; // увеличиваем прогресс на 5%
+                    progress.value = value;
+                    progressLabel.textContent = `${value}% Завершено`;
+                } else {
+                    clearInterval(interval); // прекращаем обновления при 100%
+                    progressLabel.textContent = "Загрузка завершена!";
+                }
+            }, 500); // обновление каждые 500 мс
+        }
+    </script>
+            <p><footer>Aimen Kudaibergenov</footer></p>
+</body>
+</html>
